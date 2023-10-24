@@ -24,6 +24,7 @@ jobs:
       - run: flutter build apk --debug
       - run: ls -la ./app/build/outputs/apk/debug/
 
+      # Apk upload
       - name: Upload APK to Slack
         run: |
           VERSION="${{ github.run_number }}"
