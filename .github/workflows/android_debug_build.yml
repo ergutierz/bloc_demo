@@ -29,6 +29,6 @@ jobs:
           VERSION="${{ github.run_number }}"
           curl -F file=@./app/build/outputs/apk/debug/app-debug.apk \
                -F "initial_comment=Debug-build version $VERSION" \
-               -F channels=general \
+               -F channels=random \
                -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
                https://slack.com/api/files.upload
