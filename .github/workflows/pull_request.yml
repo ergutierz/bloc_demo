@@ -31,6 +31,10 @@ jobs:
     - name: Print Working Directory
       run: pwd
 
+    # Run Flutter Doctor for Debugging
+    - name: Flutter Doctor
+      run: flutter doctor -v  
+
     - name: Flutter Clean
       run: flutter clean
 
