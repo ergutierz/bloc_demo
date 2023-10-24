@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World'),
+          child: LoginScreen(),
         ),
       ),
     ),
   );
+}
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text('Login Screen'),
+    );
+  }
 }
