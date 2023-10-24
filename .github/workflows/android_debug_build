@@ -23,7 +23,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build apk --debug
       
-      # Upload APK to Slack (this will only run when a push to `develop` happens)
+      # Upload APK to Slack 
       - name: Upload APK to Slack
         run: |
           VERSION="${{ github.run_number }}"
