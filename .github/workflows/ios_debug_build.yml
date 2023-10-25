@@ -14,10 +14,10 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Xcode
-        uses: actions/setup-xcode@v2
+      - uses: subosito/flutter-action@v2
         with:
-          xcode-version: '13.x'
+          channel: 'stable'
+          architecture: x64
 
       - name: Install CocoaPods
         run: sudo gem install cocoapods
@@ -28,7 +28,8 @@ jobs:
           channel: 'stable'
 
       - run: flutter pub get
-      - run: flutter build ios --debug
+      - run: flutter test
+      - run: flutter build ios --release --no-codesign
       - name: List Contents of Working Directory
         run: ls -la
 
@@ -36,7 +37,7 @@ jobs:
       - name: Upload iOS App to Slack
         run: |
           VERSION="${{ github.run_number }}"
-          curl -F file=@./build/ios/Runner.ipa \ 
+          curl -F file==@./build/ios/iphoneos/Runner.app \ 
                -F "initial_comment=Debug-build version $VERSION" \
                -F channels=random \
                -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
