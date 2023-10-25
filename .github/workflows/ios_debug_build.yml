@@ -30,6 +30,7 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build ios --release --no-codesign
+      - run: ls $PWD/build/ios/iphoneos
       - name: Generate IPA
         run: |
           xcodebuild -exportArchive -archivePath $PWD/build/ios/iphoneos/Runner.xcarchive -exportOptionsPlist $PWD/ExportOptions.plist -exportPath $PWD/build/app-debug.ipa      
