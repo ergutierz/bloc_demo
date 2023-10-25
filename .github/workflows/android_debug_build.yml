@@ -22,13 +22,14 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter build apk --debug
-      - run: ls -la ./app/build/outputs/apk/debug/
 
-      # upload to Slacks
+      - name: List Contents of Working Directory
+        run: ls -la
+
       - name: Upload APK to Slack
         run: |
           VERSION="${{ github.run_number }}"
-          curl -F file=@./app/build/outputs/apk/debug/app-debug.apk \
+          curl -F file=@./build/app/outputs/flutter-apk/app-debug.apk \
                -F "initial_comment=Debug-build version $VERSION" \
                -F channels=random \
                -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
