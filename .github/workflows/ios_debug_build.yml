@@ -33,7 +33,7 @@ jobs:
       - name: List Contents of Working Directory
         run: ls -la
 
-      # Upload iOS app to Slack
+      # Upload iOS app to Slack Channel
       - name: Upload iOS App to Slack
         run: |
           VERSION="${{ github.run_number }}"
