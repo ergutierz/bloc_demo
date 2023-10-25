@@ -37,8 +37,8 @@ jobs:
       - name: Upload iOS App to Slack
         run: |
           VERSION="${{ github.run_number }}"
-          curl -F file==@./build/ios/iphoneos/Runner.app \ 
-               -F "initial_comment=Debug-build version $VERSION" \
-               -F channels=random \
-               -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
-               https://slack.com/api/files.upload
+          curl -F file=@./build/ios/iphoneos/Runner.app \
+            -F "initial_comment=IOS::Debug-build version $VERSION" \
+           -F channels=random \
+           -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+           https://slack.com/api/files.upload
