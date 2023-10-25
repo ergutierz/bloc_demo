@@ -41,11 +41,11 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           CHANNEL_ID: random
           VERSION: "8"
-          run: |
-            curl -F file=@build/ios/iphoneos/Runner.app.zip \
-             -F "initial_comment=IOS::Debug-build version $VERSION" \
-             -F channels=$CHANNEL_ID \
-             -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-             https://slack.com/api/files.upload
+        run: |
+          curl -F file=@build/ios/iphoneos/Runner.app.zip \
+               -F "initial_comment=IOS::Debug-build version $VERSION" \
+               -F channels=$CHANNEL_ID \
+               -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+               https://slack.com/api/files.upload
 
 
