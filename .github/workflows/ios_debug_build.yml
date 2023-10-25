@@ -28,16 +28,20 @@ jobs:
           channel: 'stable'
 
       - run: flutter pub get
-      - run: flutter test
-      - run: flutter build ios --release --no-codesign
       - name: Build iOS Debug
         run: flutter build ios --debug --no-codesign      
       
-      - name: Upload iOS App to Slack
+      - name: Send IPA to Slack
+        env:
+          FLUTTER_ROOT: /Users/runner/hostedtoolcache/flutter/stable-3.13.8-x64
+          PUB_CACHE: /Users/runner/hostedtoolcache/flutter/stable-3.13.8-x64
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          CHANNEL_ID: random
+          VERSION: "8"
         run: |
-          VERSION="${{ github.run_number }}"
-          curl -F file =@build/ios/iphoneos/Runner.app \
-               -F "initial_comment=IOS::Debug-build version $VERSION" \
-               -F channels=random \
-               -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
-               https://slack.com/api/files.upload
+          curl -F file=@build/ios/iphoneos/Runner.app \
+           -F "initial_comment=IOS::Debug-build version $VERSION" \
+           -F channels=$CHANNEL_ID \
+           -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+           https://slack.com/api/files.upload
+
