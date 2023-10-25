@@ -33,12 +33,15 @@ jobs:
       - name: List Contents of Working Directory
         run: ls -la
 
-      # Upload iOS app to Slack Channel
+      # Upload iOS app to Slack
+      - name: Zip the Runner.app
+        run: zip -r ./build/ios/iphoneos/Runner.app.zip ./build/ios/iphoneos/Runner.app
+
       - name: Upload iOS App to Slack
         run: |
           VERSION="${{ github.run_number }}"
-          curl -F file=@./build/ios/iphoneos/Runner.app \
-            -F "initial_comment=IOS::Debug-build version $VERSION" \
-           -F channels=random \
-           -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
-           https://slack.com/api/files.upload
+          curl -F file=@./build/ios/iphoneos/Runner.app.zip \
+               -F "initial_comment=IOS::Debug-build version $VERSION" \
+               -F channels=random \
+               -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+               https://slack.com/api/files.upload
