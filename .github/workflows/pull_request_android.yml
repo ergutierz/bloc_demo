@@ -5,6 +5,7 @@ on:
     paths:
       - '**.dart'
       - 'pubspec.yaml'
+      - '**.yml'
 
 jobs:
   build:
