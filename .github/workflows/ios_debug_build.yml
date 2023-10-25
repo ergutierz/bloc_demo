@@ -30,15 +30,13 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build ios --release --no-codesign
-      - run: ls $PWD/build/ios/iphoneos
-      - name: Generate IPA
-        run: |
-          xcodebuild -exportArchive -archivePath $PWD/build/ios/iphoneos/Runner.xcarchive -exportOptionsPlist $PWD/ExportOptions.plist -exportPath $PWD/build/app-debug.ipa      
+      - name: Build iOS Debug
+        run: flutter build ios --debug --no-codesign      
       
       - name: Upload iOS App to Slack
         run: |
           VERSION="${{ github.run_number }}"
-          curl -F file =@./build/app-debug.ipa \
+          curl -F file =@build/ios/iphoneos/Runner.app \
                -F "initial_comment=IOS::Debug-build version $VERSION" \
                -F channels=random \
                -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
