@@ -1,4 +1,4 @@
-import 'package:bloc_demo/presentation/font_manager.dart';
+import 'package:bloc_demo/presentation/resources/font_manager.dart';
 import 'package:flutter/material.dart';
 
 TextStyle _getTextStyle(

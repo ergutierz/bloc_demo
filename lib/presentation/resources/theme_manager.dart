@@ -1,5 +1,5 @@
-import 'package:bloc_demo/presentation/styles_manager.dart';
-import 'package:bloc_demo/presentation/values_manager.dart';
+import 'package:bloc_demo/presentation/resources/styles_manager.dart';
+import 'package:bloc_demo/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
 import 'color_manager.dart';
