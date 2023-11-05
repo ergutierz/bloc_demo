@@ -1,5 +1,6 @@
 import 'package:bloc_demo/presentation/forgot_password/forgot_password_view.dart';
 import 'package:bloc_demo/presentation/register/register_view.dart';
+import 'package:bloc_demo/presentation/resources/strings_manager.dart';
 import 'package:bloc_demo/presentation/splash/splash_view.dart';
 import 'package:bloc_demo/presentation/store_details/store_details_view.dart';
 import 'package:flutter/material.dart';
@@ -44,10 +45,10 @@ class RouteConstructor {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('No Route Found'),
+          title: const Text(AppString.unknownPageTitle),
         ),
         body: const Center(
-          child: Text('No Route Found'),
+          child: Text(AppString.unknownPageTitle),
         ),
       );
     });
