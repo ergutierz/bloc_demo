@@ -45,10 +45,10 @@ class RouteConstructor {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text(AppString.unknownPageTitle),
+          title: const Text(AppStrings.unknownPageTitle),
         ),
         body: const Center(
-          child: Text(AppString.unknownPageTitle),
+          child: Text(AppStrings.unknownPageTitle),
         ),
       );
     });
