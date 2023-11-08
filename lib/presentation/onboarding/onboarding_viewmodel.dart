@@ -8,7 +8,6 @@ class OnBoardingViewModel {
 
   onIntent(OnBoardingIntent intent) {
     switch(intent) {
-      case OnBoardingIntentStart(): _onBoardingIntentStart();
       case OnBoardingIntentNext(): _onBoardingIntentNext();
       case OnBoardingIntentPrevious(): _onBoardingIntentPrevious();
       case OnBoardingIntentSkip(): _onBoardingIntentSkip();
@@ -16,10 +15,6 @@ class OnBoardingViewModel {
       case OnBoardingIntentUpdateIndex(): _onBoardingIntentUpdateIndex(index: intent.index);
       case OnBoardingIntentDispose(): _dispose();
     }
-  }
-
-  _onBoardingIntentStart() {
-    modelStore.processEvent(OnBoardingEventStart());
   }
 
   _onBoardingIntentNext() {
@@ -48,7 +43,6 @@ class OnBoardingViewModel {
 }
 
 sealed class OnBoardingIntent {}
-class OnBoardingIntentStart extends OnBoardingIntent {}
 class OnBoardingIntentNext extends OnBoardingIntent {}
 class OnBoardingIntentPrevious extends OnBoardingIntent {}
 class OnBoardingIntentSkip extends OnBoardingIntent {}
@@ -60,11 +54,11 @@ class OnBoardingIntentUpdateIndex extends OnBoardingIntent {
 }
 
 sealed class OnBoardingEvent {}
-class OnBoardingEventStart extends OnBoardingEvent {}
 class OnBoardingEventNext extends OnBoardingEvent {}
 class OnBoardingEventPrevious extends OnBoardingEvent {}
 class OnBoardingEventSkip extends OnBoardingEvent {}
 class OnBoardingEventFinish extends OnBoardingEvent {}
+class OnBoardingEventDefault extends OnBoardingEvent {}
 
 class OnBoardingViewState {
   int currentIndex = 0;

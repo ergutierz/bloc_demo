@@ -3,15 +3,15 @@ import 'package:flutter_svg/svg.dart';
 
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
-import '../resources/routes_manager.dart';
 import '../resources/strings_manager.dart';
 import '../resources/values_manager.dart';
 import 'onboarding_viewmodel.dart';
 
-Widget onBoardingNavigationBar(
+Widget onBoardingBottomNavigationBar(
     BuildContext context,
     PageController pageController,
-    OnBoardingViewState viewState
+    OnBoardingViewState viewState,
+    Function(OnBoardingIntent) onIntent,
 ) =>
     Container(
       color: ColorManager.white,
@@ -21,7 +21,9 @@ Widget onBoardingNavigationBar(
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                onIntent(OnBoardingIntentSkip());
+              },
               child: Text(
                 AppStrings.skip,
                 style: Theme.of(context).textTheme.subtitle2,
@@ -29,7 +31,7 @@ Widget onBoardingNavigationBar(
               ),
             ),
           ),
-          _getBottomWidget(context, pageController, viewState),
+          _getBottomWidget(context, pageController, viewState, onIntent),
         ],
       ),
     );
@@ -37,7 +39,8 @@ Widget onBoardingNavigationBar(
 Widget _getBottomWidget(
     BuildContext context,
     PageController pageController,
-    OnBoardingViewState viewState
+    OnBoardingViewState viewState,
+    Function(OnBoardingIntent) onIntent,
 ) =>
     Container(
       color: ColorManager.primary,
@@ -52,9 +55,7 @@ Widget _getBottomWidget(
                     width: AppSize.s20,
                     child: SvgPicture.asset(ImageAssets.leftArrow)),
                 onTap: () {
-                  pageController.previousPage(
-                      duration: DurationConstants.pageTransitionDuration,
-                      curve: Curves.easeIn);
+                  onIntent(OnBoardingIntentPrevious());
                 },
               )),
           Row(
@@ -75,11 +76,9 @@ Widget _getBottomWidget(
                     child: SvgPicture.asset(ImageAssets.rightArrow)),
                 onTap: () {
                   if (viewState.currentIndex == 3) {
-                    Navigator.pushNamed(context, Routes.loginRoute);
+                    onIntent(OnBoardingIntentFinish());
                   } else {
-                    pageController.nextPage(
-                        duration: DurationConstants.pageTransitionDuration,
-                        curve: Curves.easeIn);
+                    onIntent(OnBoardingIntentNext());
                   }
                 },
               ))

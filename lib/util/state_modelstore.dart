@@ -1,24 +1,24 @@
 import 'dart:async';
 
 class StateModelStore<ViewState, Event> {
-  final _stateController = StreamController<ViewState>.broadcast();
-  Stream<ViewState> get viewState => _stateController.stream;
+  final StreamController _stateController = StreamController<ViewState>();
+  Stream<ViewState> get viewState => _stateController.stream.map((state) => state);
   ViewState _currentState;
   
-  final _eventController = StreamController<Event>.broadcast();
-  Stream<Event> get events => _eventController.stream;
+  final StreamController _eventController = StreamController<Event>();
+  Stream<Event> get events => _eventController.stream.map((event) => event);
 
   StateModelStore(ViewState initialState) : _currentState = initialState {
-    _stateController.add(initialState);
+    _stateController.sink.add(initialState);
   }
 
   processState(ViewState Function(ViewState) stateChange) {
     _currentState = stateChange(_currentState);
-    _stateController.add(_currentState);
+    _stateController.sink.add(_currentState);
   }
 
   processEvent(Event event) {
-    _eventController.add(event);
+    _eventController.sink.add(event);
   }
 
   dispose() {
