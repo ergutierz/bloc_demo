@@ -4,7 +4,9 @@ import 'package:bloc_demo/presentation/onboarding/onboarding/bloc/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
+import '../../../../di/dependency_registry.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/routes_manager.dart';
 import '../../../resources/values_manager.dart';
@@ -28,7 +30,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   void initState() {
     super.initState();
-    _bloc = OnBoardingBloc()
+    _bloc = instance.get<OnBoardingBloc>()
       ..add(OnBoardingEventDefault())
       ..events.listen((event) { _handleEffect(event); });
   }
