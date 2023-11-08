@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../resources/values_manager.dart';
-import 'onboarding_pager_decorator.dart';
+import '../../../resources/values_manager.dart';
+import '../viewmodel/onboarding_pager_decorator.dart';
 
 class OnBoardingPage extends StatelessWidget {
   final OnboardingPage page;

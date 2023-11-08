@@ -1,10 +1,10 @@
-import 'package:bloc_demo/presentation/onboarding/mvi_onboarding/onboarding_bottom_navigation_bar.dart';
-import 'package:bloc_demo/presentation/onboarding/mvi_onboarding/onboarding_viewmodel.dart';
+import 'package:bloc_demo/presentation/onboarding/mvi_onboarding/view/onboarding_bottom_navigation_bar.dart';
+import 'package:bloc_demo/presentation/onboarding/mvi_onboarding/viewmodel/onboarding_viewmodel.dart';
 import 'package:bloc_demo/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../resources/color_manager.dart';
-import '../../resources/routes_manager.dart';
+import '../../../resources/color_manager.dart';
+import '../../../resources/routes_manager.dart';
 import 'onboarding_page.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -76,7 +76,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             duration: DurationConstants.pageTransitionDuration,
             curve: Curves.easeIn);
         case OnBoardingEventSkip() || OnBoardingEventFinish(): Navigator.pushNamed(context, Routes.loginRoute);
-        default:
       }
     });
   }

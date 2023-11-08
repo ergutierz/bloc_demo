@@ -1,4 +1,4 @@
-import '../../../util/state_modelstore.dart';
+import '../../../../util/state_modelstore.dart';
 import 'onboarding_pager_decorator.dart';
 
 class OnBoardingViewModel {
@@ -57,7 +57,6 @@ class OnBoardingEventNext extends OnBoardingEvent {}
 class OnBoardingEventPrevious extends OnBoardingEvent {}
 class OnBoardingEventSkip extends OnBoardingEvent {}
 class OnBoardingEventFinish extends OnBoardingEvent {}
-class OnBoardingEventDefault extends OnBoardingEvent {}
 
 class OnBoardingViewState {
   int currentIndex = 0;
