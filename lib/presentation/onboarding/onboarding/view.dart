@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_demo/presentation/onboarding/onboarding/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,26 +14,36 @@ import 'bottom_navigation_bar.dart';
 import 'effect.dart';
 import 'event.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  late final OnBoardingBloc _bloc;
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = OnBoardingBloc()
+      ..add(OnBoardingEventDefault())
+      ..events.listen((event) { _handleEffect(event, context); });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final PageController pageController = PageController(initialPage: 0);
-    return BlocProvider(
-      create: (BuildContext context) => OnBoardingBloc()..add(OnBoardingEventDefault()),
-      child: BlocConsumer<OnBoardingBloc, OnboardingState>(
-        listener: (context, state) {
-          _handleEffect(state.oneTimeEvent.value, context, pageController);
-        },
-        builder: (context, state) {
-          return _buildPage(context, pageController, state);
-        },
-      ),
+    return BlocBuilder<OnBoardingBloc, OnboardingState>(
+      bloc: _bloc,
+      builder: (context, state) {
+        return _buildScreen(context, state);
+      },
     );
   }
 
-  Widget _buildPage(BuildContext context, PageController pageController, OnboardingState state) {
+  Widget _buildScreen(BuildContext context, OnboardingState state) {
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: AppBar(
@@ -44,35 +56,34 @@ class OnboardingScreen extends StatelessWidget {
         ),
       ),
       body: PageView.builder(
-        controller: pageController,
+        controller: _pageController,
         itemCount: state.pagerDecorator.pages.length,
         onPageChanged: (int index) {
-          BlocProvider.of<OnBoardingBloc>(context).add(OnBoardingEventUpdateIndex(index: index));
+          _bloc.add(OnBoardingEventUpdateIndex(index: index));
         },
         itemBuilder: (BuildContext context, int index) {
           return OnBoardingPage(page: state.pagerDecorator.pages[index]);
         },
       ),
-      bottomNavigationBar: onBoardingBottomBar(context, pageController, state, BlocProvider.of<OnBoardingBloc>(context).add),
+      bottomNavigationBar: onBoardingBottomBar(context, _pageController, state, _bloc.add),
     );
   }
 
-  void _handleEffect(OnBoardingEffect? effect, BuildContext context, PageController pageController) {
-    if (effect != null) {
-      if (effect is OnBoardingEffectNext) {
-        pageController.nextPage(
+  void _handleEffect(OnBoardingEffect effect, BuildContext context) {
+    switch(effect) {
+      case OnBoardingEffectNext():
+        _pageController.nextPage(
           duration: DurationConstants.pageTransitionDuration,
           curve: Curves.easeIn,
         );
-      } else if (effect is OnBoardingEffectPrevious) {
-        pageController.previousPage(
+      case OnBoardingEffectPrevious():
+        _pageController.previousPage(
           duration: DurationConstants.pageTransitionDuration,
           curve: Curves.easeIn,
         );
-      } else if (effect is OnBoardingEffectSkip || effect is OnBoardingEffectFinish) {
+      case OnBoardingEffectSkip() || OnBoardingEffectFinish():
         Navigator.pushNamed(context, Routes.loginRoute);
-      }
-      BlocProvider.of<OnBoardingBloc>(context).add(OnBoardingEventDispose());
+      default: {}
     }
   }
 }

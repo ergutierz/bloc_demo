@@ -8,7 +8,6 @@ class OnboardingState {
   int currentIndex = 0;
   bool isLoading = false;
   OnBoardingPagerDecorator pagerDecorator = OnBoardingPagerDecorator().decorate();
-  OneTimeEvent<OnBoardingEffect> oneTimeEvent = OneTimeEvent(OnBoardingEffectDefault());
 
   OnboardingState init() {
     return OnboardingState();
@@ -18,12 +17,10 @@ class OnboardingState {
     int? currentIndex,
     bool? isLoading,
     OnBoardingPagerDecorator? pagerDecorator,
-    OneTimeEvent<OnBoardingEffect>? oneTimeEvent,
   }) {
     return OnboardingState()
       ..currentIndex = currentIndex ?? this.currentIndex
       ..isLoading = isLoading ?? this.isLoading
-      ..pagerDecorator = pagerDecorator ?? this.pagerDecorator
-      ..oneTimeEvent = oneTimeEvent ?? this.oneTimeEvent;
+      ..pagerDecorator = pagerDecorator ?? this.pagerDecorator;
   }
 }
