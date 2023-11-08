@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../resources/assets_manager.dart';
-import '../resources/color_manager.dart';
-import '../resources/strings_manager.dart';
-import '../resources/values_manager.dart';
+import '../../resources/assets_manager.dart';
+import '../../resources/color_manager.dart';
+import '../../resources/strings_manager.dart';
+import '../../resources/values_manager.dart';
 import 'onboarding_viewmodel.dart';
 
 Widget onBoardingBottomNavigationBar(

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../login/login_view.dart';
 import '../main/main_view.dart';
-import '../onboarding/onboarding_view.dart';
+import '../onboarding/onboarding/view.dart';
 
 class Routes {
   static const String splashRoute = '/';
@@ -25,7 +25,7 @@ class RouteConstructor {
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.onBoardingRoute:
-        return MaterialPageRoute(builder: (_) => const OnBoardingView());
+        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:

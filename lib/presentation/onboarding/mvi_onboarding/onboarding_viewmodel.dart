@@ -1,6 +1,5 @@
-import 'package:bloc_demo/presentation/onboarding/onboarding_pager_decorator.dart';
-
-import '../../util/state_modelstore.dart';
+import '../../../util/state_modelstore.dart';
+import 'onboarding_pager_decorator.dart';
 
 class OnBoardingViewModel {
   final StateModelStore<OnBoardingViewState, OnBoardingEvent> modelStore =
