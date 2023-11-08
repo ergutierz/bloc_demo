@@ -83,7 +83,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         );
       case OnBoardingEffectSkip() || OnBoardingEffectFinish():
         Navigator.pushNamed(context, Routes.loginRoute);
-      default: {}
     }
   }
 }
