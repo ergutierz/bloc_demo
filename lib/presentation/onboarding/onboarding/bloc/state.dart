@@ -1,10 +1,11 @@
+import 'package:bloc_demo/model/user_details.dart';
 import 'package:bloc_demo/util/one-time-event.dart';
 
 import '../../mvi_onboarding/viewmodel/onboarding_pager_decorator.dart';
 import 'effect.dart';
 
 class OnboardingState {
-
+  UserDetails? userDetails = null;
   int currentIndex = 0;
   bool isLoading = false;
   OnBoardingPagerDecorator pagerDecorator = OnBoardingPagerDecorator().decorate();
@@ -14,11 +15,13 @@ class OnboardingState {
   }
 
   OnboardingState copy({
+    UserDetails? userDetails,
     int? currentIndex,
     bool? isLoading,
     OnBoardingPagerDecorator? pagerDecorator,
   }) {
     return OnboardingState()
+      ..userDetails = userDetails ?? this.userDetails
       ..currentIndex = currentIndex ?? this.currentIndex
       ..isLoading = isLoading ?? this.isLoading
       ..pagerDecorator = pagerDecorator ?? this.pagerDecorator;
