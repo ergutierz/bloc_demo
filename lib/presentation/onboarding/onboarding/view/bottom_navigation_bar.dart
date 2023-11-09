@@ -1,4 +1,4 @@
-import 'package:bloc_demo/presentation/onboarding/onboarding/bloc/state.dart';
+import 'package:bloc_demo/presentation/onboarding/onboarding/bloc/onboarding_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -6,7 +6,7 @@ import '../../../resources/assets_manager.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/strings_manager.dart';
 import '../../../resources/values_manager.dart';
-import '../bloc/event.dart';
+import '../bloc/onboarding_event.dart';
 
 Widget onBoardingBottomBar(
     BuildContext context,

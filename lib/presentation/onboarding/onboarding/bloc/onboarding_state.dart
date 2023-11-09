@@ -3,7 +3,7 @@ import 'package:bloc_demo/model/user_details.dart';
 import '../../mvi_onboarding/viewmodel/onboarding_pager_decorator.dart';
 
 class OnboardingState {
-  UserDetails? userDetails;
+  UserDetails? userDetails = null;
   int currentIndex = 0;
   bool isLoading = false;
   OnBoardingPagerDecorator pagerDecorator = OnBoardingPagerDecorator().decorate();

@@ -9,10 +9,10 @@ import '../../../resources/color_manager.dart';
 import '../../../resources/routes_manager.dart';
 import '../../../resources/values_manager.dart';
 import '../../mvi_onboarding/view/onboarding_page.dart';
-import '../bloc/bloc.dart';
+import '../bloc/onboarding_bloc.dart';
 import 'bottom_navigation_bar.dart';
-import '../bloc/effect.dart';
-import '../bloc/event.dart';
+import '../bloc/onboarding_effect.dart';
+import '../bloc/onboarding_event.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

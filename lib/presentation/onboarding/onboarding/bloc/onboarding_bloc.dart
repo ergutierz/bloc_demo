@@ -4,8 +4,8 @@ import 'package:bloc_demo/presentation/onboarding/onboarding/bloc/effect.dart';
 import 'package:bloc_demo/remote/user_details_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'event.dart';
-import 'state.dart';
+import 'onboarding_event.dart';
+import 'onboarding_state.dart';
 
 class OnBoardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final UserDetailsRepository _userDetailsRepository;
@@ -43,8 +43,8 @@ class OnBoardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   Future<void> _fetchUserDetails(Emitter<OnboardingState> emit) async {
-    // final userDetails = await _userDetailsRepository.fetchUserDetails();
-    // emit(state.copy(userDetails: userDetails));
+    final userDetails = await _userDetailsRepository.fetchUserDetails();
+    emit(state.copy(userDetails: userDetails));
   }
 }
 
