@@ -1,0 +1,62 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+abstract class  LocaleKeys {
+  static const no_route_found = 'no_route_found';
+  static const on_boarding_title1 = 'on_boarding_title1';
+  static const on_boarding_title2 = 'on_boarding_title2';
+  static const on_boarding_title3 = 'on_boarding_title3';
+  static const on_boarding_title4 = 'on_boarding_title4';
+  static const on_boarding_desc1 = 'on_boarding_desc1';
+  static const on_boarding_desc2 = 'on_boarding_desc2';
+  static const on_boarding_desc3 = 'on_boarding_desc3';
+  static const on_boarding_desc4 = 'on_boarding_desc4';
+  static const skip = 'skip';
+  static const invalid_password = 'invalid_password';
+  static const username_hint = 'username_hint';
+  static const password_hint = 'password_hint';
+  static const login_button = 'login_button';
+  static const forgot_password_text = 'forgot_password_text';
+  static const register_text = 'register_text';
+  static const loading = 'loading';
+  static const retry_again = 'retry_again';
+  static const error_occurred = 'error_occurred';
+  static const ok = 'ok';
+  static const invalid_user_name = 'invalid_user_name';
+  static const invalid_mobile_number = 'invalid_mobile_number';
+  static const invalid_email = 'invalid_email';
+  static const register = 'register';
+  static const already_have_account = 'already_have_account';
+  static const upload_profile_pictuSearchre = 'upload_profile_pictuSearchre';
+  static const photo_gallery = 'photo_gallery';
+  static const camera = 'camera';
+  static const mobile_number_hint = 'mobile_number_hint';
+  static const email_hint = 'email_hint';
+  static const notification = 'notification';
+  static const search = 'search';
+  static const home = 'home';
+  static const settings = 'settings';
+  static const services = 'services';
+  static const stores = 'stores';
+  static const about = 'about';
+  static const details = 'details';
+  static const store_details = 'store_details';
+  static const success = 'success';
+  static const bad_request_error = 'bad_request_error';
+  static const forbidden_error = 'forbidden_error';
+  static const unauthorized_error = 'unauthorized_error';
+  static const not_found_error = 'not_found_error';
+  static const conflict_error = 'conflict_error';
+  static const internal_server_error = 'internal_server_error';
+  static const unknown_error = 'unknown_error';
+  static const timeout_error = 'timeout_error';
+  static const default_error = 'default_error';
+  static const cache_error = 'cache_error';
+  static const no_internet_error = 'no_internet_error';
+  static const no_content = 'no_content';
+  static const change_language = 'change_language';
+  static const contact_us = 'contact_us';
+  static const invite_your_friends = 'invite_your_friends';
+  static const logout = 'logout';
+  static const reset_password = 'reset_password';
+
+}

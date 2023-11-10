@@ -28,7 +28,7 @@ Widget onBoardingBottomBar(
             },
             child: Text(
               AppStrings.skip,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
               textAlign: TextAlign.end,
             ),
           ),

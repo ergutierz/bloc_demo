@@ -108,19 +108,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
   }
 
   void _authenticate() async {
-    final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
-    final bool canAuthenticate = canAuthenticateWithBiometrics || await auth.isDeviceSupported();
-
-    if (canAuthenticate) {
-      bool didAuthenticate = await auth.authenticate(
-        localizedReason: 'Please authenticate to log in',
-        options: const AuthenticationOptions(biometricOnly: true),
-      );
-
-      if (didAuthenticate) {
-        // Proceed to the app
-      }
-    }
+    // final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
+    // final bool canAuthenticate = canAuthenticateWithBiometrics || await auth.isDeviceSupported();
+    //
+    // if (canAuthenticate) {
+    //   bool didAuthenticate = await auth.authenticate(
+    //     localizedReason: 'Please authenticate to log in',
+    //     options: const AuthenticationOptions(biometricOnly: true),
+    //   );
+    //
+    //   if (didAuthenticate) {
+    //     // Proceed to the app
+    //   }
+    // }
   }
 
   @override

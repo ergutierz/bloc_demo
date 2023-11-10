@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StoreDetailsView extends StatefulWidget {
-  const StoreDetailsView({Key? key}) : super(key: key);
+  const StoreDetailsView({super.key});
 
   @override
   _StoreDetailsViewState createState() => _StoreDetailsViewState();

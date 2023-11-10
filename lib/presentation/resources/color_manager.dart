@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../util/color_utils.dart';
+
+import '../../core/util/color_utils.dart';
 
 class ColorManager {
   static Color primary = ColorUtils.fromHex('#ED9728');
@@ -11,5 +12,6 @@ class ColorManager {
   static Color grey1 = ColorUtils.fromHex('#707070');
   static Color grey2 = ColorUtils.fromHex('#797979');
   static Color white = ColorUtils.fromHex('#FFFFFF');
+  static Color black = ColorUtils.fromHex('#000000');
   static Color error = ColorUtils.fromHex('#e61f34');
 }

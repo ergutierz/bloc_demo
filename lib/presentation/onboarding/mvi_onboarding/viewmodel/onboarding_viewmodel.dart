@@ -1,4 +1,4 @@
-import '../../../../util/state_modelstore.dart';
+import '../../../../core/util/state_modelstore.dart';
 import 'onboarding_pager_decorator.dart';
 
 class OnBoardingViewModel {

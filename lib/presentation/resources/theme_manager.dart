@@ -34,61 +34,61 @@ ThemeData getApplicationTheme() {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        primary: ColorManager.primary,
+        backgroundColor: ColorManager.primary,
         textStyle: getTextStyleRegular(color: ColorManager.white),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSize.s12)),
       ),
     ),
     textTheme: TextTheme(
-      headline1: getTextStyleBold(
+      displayLarge: getTextStyleBold(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s24
       ),
-      headline2: getTextStyleBold(
+      displayMedium: getTextStyleBold(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s20
       ),
-      headline3: getTextStyleBold(
+      displaySmall: getTextStyleBold(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s18
       ),
-      headline4: getTextStyleBold(
+      headlineMedium: getTextStyleBold(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s16
       ),
-      headline5: getTextStyleBold(
+      headlineSmall: getTextStyleBold(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s14
       ),
-      headline6: getTextStyleBold(
+      titleLarge: getTextStyleBold(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s12
       ),
-      subtitle1: getTextStyleMedium(
+      titleMedium: getTextStyleMedium(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s14
       ),
-      subtitle2: getTextStyleMedium(
+      titleSmall: getTextStyleMedium(
           color: ColorManager.primary,
           fontSize: FontSize.s12
       ),
-      bodyText1: getTextStyleRegular(
+      bodyLarge: getTextStyleRegular(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s14
       ),
-      bodyText2: getTextStyleRegular(
+      bodyMedium: getTextStyleRegular(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s12
       ),
-      caption: getTextStyleRegular(
+      bodySmall: getTextStyleRegular(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s10
       ),
-      button: getTextStyleMedium(
+      labelLarge: getTextStyleMedium(
           color: ColorManager.white,
           fontSize: FontSize.s14
       ),
-      overline: getTextStyleRegular(
+      labelSmall: getTextStyleRegular(
           color: ColorManager.darkGrey,
           fontSize: FontSize.s10
       ),

@@ -1,4 +1,4 @@
-import '../../util/state_modelstore.dart';
+import '../../core/util/state_modelstore.dart';
 
 class LoginViewModel {
   final StateModelStore<LoginViewState, LoginEvent> modelStore =

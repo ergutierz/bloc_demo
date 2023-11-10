@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../presentation/resources/routes_manager.dart';
@@ -19,6 +20,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        supportedLocales: context.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
+        locale: context.locale,
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splashRoute,
         onGenerateRoute: RouteConstructor.getRoute,

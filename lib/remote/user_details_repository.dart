@@ -7,10 +7,10 @@ class UserDetailsRepository {
   UserDetailsRepository(this._userDetailsService);
 
   Future<UserDetails?> fetchUserDetails() async {
-    final response = await _userDetailsService.fetchUserDetails();
-    if (response.statusCode == 200) {
-      return response.data;
-    }
+    // final response = await _userDetailsService.fetchUserDetails();
+    // if (response.statusCode == 200) {
+    //   return response.data;
+    // }
     return null;
   }
 }
