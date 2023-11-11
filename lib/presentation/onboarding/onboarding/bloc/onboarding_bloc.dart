@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:fimber/fimber.dart';
 import 'package:bloc_demo/domain/product_repository.dart';
 import 'package:bloc_demo/remote/user_details_repository.dart';
 import 'package:drift/drift.dart';
@@ -59,24 +58,14 @@ class OnBoardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     var endState = products;
   }
 
-  Future<void> _fetchUserDetails(Emitter<OnboardingState> emit) async {
-    _onFetchUserData();
-  }
-
-  _onFetchUserData() {
-    _userDetailsRepository.fetchUserDetails().listen((userDetails) {
-        if (userDetails != null) {
-          var x = userDetails;
-        } else {
-          var x = userDetails;
-        }
-      },
-      onError: (error) {
-        if (kDebugMode) {
-          print('Error: $error');
-        }
-      },
-    );
+  _fetchUserDetails(Emitter<OnboardingState> emit) async {
+    try {
+      final userDetails = await _userDetailsRepository.fetchUserDetails().first;
+      emit(state.copy(userDetails: userDetails));
+      Fimber.d('User details: $userDetails');
+    } catch (error) {
+      Fimber.e('Error: $error');
+    }
   }
 
   Future<void> _addDummyProducts() async {

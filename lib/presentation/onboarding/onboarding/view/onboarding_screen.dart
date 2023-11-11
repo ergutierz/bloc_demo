@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_auth/local_auth.dart';
 
 import '../../../../di/dependency_registry.dart';
+import '../../../../model/user_details.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/routes_manager.dart';
 import '../../../resources/values_manager.dart';
@@ -64,7 +65,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
           _bloc.add(OnBoardingEventUpdateIndex(index: index));
         },
         itemBuilder: (BuildContext context, int index) {
-          return OnBoardingPage(page: state.pagerDecorator.pages[index]);
+          if (_bloc.state.userDetails != null && index == 0) {
+            return _buildUserDetailsCard(_bloc.state.userDetails!);
+          } else {
+            return OnBoardingPage(page: state.pagerDecorator.pages[index]);
+          }
         },
       ),
       bottomNavigationBar: onBoardingBottomBar(context, _pageController, state, _bloc.add),
@@ -121,6 +126,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
       }
     }
   }
+
+  Widget _buildUserDetailsCard(UserDetails userDetails) {
+    return Card(
+      child: Column(
+        children: [
+          if (userDetails.image != null) Image.network(userDetails.image!),
+          Text(userDetails.name ?? 'Unknown', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('Rating: ${userDetails.rating}'),
+          Text('Played: ${userDetails.played}'),
+          Text('Won: ${userDetails.won}'),
+          Text('Winning Percentage: ${(userDetails.winningPercentage * 100).toStringAsFixed(2)}%'),
+        ],
+      ),
+    );
+  }
+
 
   @override
   dispose() {

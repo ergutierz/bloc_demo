@@ -3,20 +3,21 @@ part 'user_details.g.dart';
 
 @JsonSerializable()
 class UserDetails {
-  final String name;
+  final String? name;
   final int rating;
   final int played;
   final int won;
+  @JsonKey(name: 'winning_percentage')
   final double winningPercentage;
-  final String imageUrl;
+  final String? image;
 
   UserDetails({
-    required this.name,
+    this.name,
     required this.rating,
     required this.played,
     required this.won,
     required this.winningPercentage,
-    required this.imageUrl,
+    this.image,
   });
 
   factory UserDetails.fromJson(Map<String, dynamic> json) => _$UserDetailsFromJson(json);
