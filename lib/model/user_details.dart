@@ -1,32 +1,24 @@
-import 'package:serializable/serializable.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'user_details.g.dart';
 
-@serializable
+@JsonSerializable()
 class UserDetails {
-  final int id;
   final String name;
-  final String email;
-  final String avatarUrl;
+  final int rating;
+  final int played;
+  final int won;
+  final double winningPercentage;
+  final String imageUrl;
 
   UserDetails({
-    required this.id,
     required this.name,
-    required this.email,
-    required this.avatarUrl,
+    required this.rating,
+    required this.played,
+    required this.won,
+    required this.winningPercentage,
+    required this.imageUrl,
   });
 
-  factory UserDetails.fromJson(Map<String, dynamic> json) {
-    return UserDetails(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      email: json['email'] as String,
-      avatarUrl: json['avatar_url'] as String,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'email': email,
-    'avatar_url': avatarUrl,
-  };
+  factory UserDetails.fromJson(Map<String, dynamic> json) => _$UserDetailsFromJson(json);
+  Map<String, dynamic> toJson() => _$UserDetailsToJson(this);
 }

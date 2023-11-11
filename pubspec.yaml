@@ -26,7 +26,8 @@ dependencies:
   lottie: ^2.7.0
   country_code_picker: ^3.0.0
   image_picker: ^1.0.4
-  rxdart: ^0.27.2
+  rxdart: ^0.27.7
+  json_annotation: ^4.5.0
   carousel_slider: ^4.0.0
   easy_localization: ^3.0.0
   flutter_phoenix: ^1.0.0
@@ -42,6 +43,8 @@ dependencies:
   path: ^1.8.2
   flutter_slidable: ^3.0.0
   drift_db_viewer: ^2.0.0
+  alice: ^0.3.3
+  http: ^1.1.0
   flutter_localizations:
     sdk: flutter
   intl: any
@@ -54,6 +57,7 @@ dev_dependencies:
   drift_dev: ^2.2.0+1
   build_runner: ^2.1.4
   flutter_lints: ^3.0.0
+  json_serializable: ^6.7.1
   build: ^2.0.0  # Required for BuildStep
 
 

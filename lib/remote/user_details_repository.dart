@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:rxdart/rxdart.dart';
+
 import '../model/user_details.dart';
 import 'user_details_service.dart';
 
@@ -6,11 +11,14 @@ class UserDetailsRepository {
 
   UserDetailsRepository(this._userDetailsService);
 
-  Future<UserDetails?> fetchUserDetails() async {
-    // final response = await _userDetailsService.fetchUserDetails();
-    // if (response.statusCode == 200) {
-    //   return response.data;
-    // }
-    return null;
+  Stream<UserDetails?> fetchUserDetails() {
+    return _userDetailsService
+        .fetchUserDetails()
+        .onErrorReturnWith((error, stackTrace) {
+          if (kDebugMode) {
+            print('Error: $error');
+          }
+          return null;
+        });
   }
 }
