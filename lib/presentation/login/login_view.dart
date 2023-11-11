@@ -3,9 +3,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../core/component/atomic_text_component.dart';
+import '../../di/dependency_registry.dart';
 import '../../translations/locale_keys.g.dart';
 import '../resources/color_manager.dart';
 import '../resources/routes_manager.dart';
+import 'login_viewmodel.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -15,6 +17,13 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  late final LoginViewModel _viewModel;
+
+  @override
+  initState() {
+    super.initState();
+    _viewModel = instance.get<LoginViewModel>();
+  }
 
   _toggleLanguage() {
     var locale = context.locale;
@@ -76,7 +85,8 @@ class _LoginViewState extends State<LoginView> {
           padding: const EdgeInsets.all(AppSize.s16),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.mainRoute);
+              // Navigator.pushNamed(context, Routes.mainRoute);
+              _viewModel.onIntent(FetchProducts());
             },
             child: const Text('SUBMIT'),
           ),

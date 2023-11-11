@@ -1,4 +1,3 @@
-import 'package:bloc_demo/presentation/onboarding/onboarding/bloc/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +9,7 @@ import '../../../resources/routes_manager.dart';
 import '../../../resources/values_manager.dart';
 import '../../mvi_onboarding/view/onboarding_page.dart';
 import '../bloc/onboarding_bloc.dart';
+import '../bloc/onboarding_state.dart';
 import 'bottom_navigation_bar.dart';
 import '../bloc/onboarding_effect.dart';
 import '../bloc/onboarding_event.dart';
@@ -29,7 +29,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
   @override
   initState() {
     super.initState();
-    _authenticate();
     WidgetsBinding.instance.addObserver(this);
     _bloc = instance.get<OnBoardingBloc>()
       ..add(OnBoardingEventDefault())
@@ -108,19 +107,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
   }
 
   void _authenticate() async {
-    // final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
-    // final bool canAuthenticate = canAuthenticateWithBiometrics || await auth.isDeviceSupported();
-    //
-    // if (canAuthenticate) {
-    //   bool didAuthenticate = await auth.authenticate(
-    //     localizedReason: 'Please authenticate to log in',
-    //     options: const AuthenticationOptions(biometricOnly: true),
-    //   );
-    //
-    //   if (didAuthenticate) {
-    //     // Proceed to the app
-    //   }
-    // }
+    final bool canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
+    final bool canAuthenticate = canAuthenticateWithBiometrics || await auth.isDeviceSupported();
+
+    if (canAuthenticate) {
+      bool didAuthenticate = await auth.authenticate(
+        localizedReason: 'Please authenticate to log in',
+        options: const AuthenticationOptions(biometricOnly: true),
+      );
+
+      if (didAuthenticate) {
+        // Proceed to the app
+      }
+    }
   }
 
   @override

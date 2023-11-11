@@ -1,27 +1,29 @@
 import 'package:drift/drift.dart';
-import 'package:drift/drift.dart';
+import 'dart:io';
 import 'package:drift/native.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
-import 'dart:io';
-import 'package:flutter/widgets.dart';
 
-import '../model/user_details.dart';
+part 'app_database.g.dart';
 
-@DriftDatabase(tables: [UserDetails])
+@DriftDatabase(tables: [Product])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase(QueryExecutor executor) : super(executor);
+  AppDatabase() : super(_openConnection());
 
   @override
   int get schemaVersion => 1;
-
-
 }
 
-@DataClassName('UserDetail')
-class Users extends Table {
+LazyDatabase _openConnection() {
+  return LazyDatabase(() async {
+    final dbFolder = await getApplicationDocumentsDirectory();
+    final file = File(p.join(dbFolder.path, 'app_db.sqlite'));
+    return NativeDatabase(file);
+  });
+}
+
+class Product extends Table {
   IntColumn get id => integer().autoIncrement()();
-  TextColumn get name => text()();
+  TextColumn get title => text()();
+  TextColumn get description => text()();
 }

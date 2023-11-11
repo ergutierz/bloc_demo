@@ -11,4 +11,5 @@ class OnBoardingEventUpdateIndex extends OnboardingEvent {
   final int index;
   OnBoardingEventUpdateIndex({required this.index});
 }
+class OnBoardingEventFetchProducts extends OnboardingEvent {}
 class OnBoardingEventDispose extends OnboardingEvent {}
