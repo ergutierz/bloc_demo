@@ -87,7 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
           duration: DurationConstants.pageTransitionDuration,
           curve: Curves.easeIn,
         );
-      case OnBoardingEffectSkip() || OnBoardingEffectFinish(): context.go(Routes.loginRoute);
+      case OnBoardingEffectSkip() || OnBoardingEffectFinish():  Navigator.pushReplacementNamed(context, Routes.loginRoute);
     }
   }
 

@@ -22,9 +22,7 @@ class _SplashViewState extends State<SplashView> {
     _timer = Timer(const Duration(seconds: 2), _goToNextPage);
   }
 
-  _goToNextPage() {
-    context.go(Routes.onBoardingRoute);
-  }
+  _goToNextPage() =>  Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
 
   @override
   void initState() {
