@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_auth/local_auth.dart';
 
 import '../../../../di/dependency_registry.dart';
@@ -86,7 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> with WidgetsBinding
           duration: DurationConstants.pageTransitionDuration,
           curve: Curves.easeIn,
         );
-      case OnBoardingEffectSkip() || OnBoardingEffectFinish(): Navigator.pushNamed(context, Routes.loginRoute);
+      case OnBoardingEffectSkip() || OnBoardingEffectFinish(): context.go(Routes.loginRoute);
     }
   }
 

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc_demo/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
@@ -22,7 +23,7 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _goToNextPage() {
-    Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+    context.go(Routes.onBoardingRoute);
   }
 
   @override

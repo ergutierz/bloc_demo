@@ -9,11 +9,11 @@ import '../../presentation/onboarding/onboarding/view/onboarding_screen.dart';
 import '../../presentation/register/register_view.dart';
 import '../../presentation/splash/splash_view.dart';
 import '../../presentation/store_details/store_details_view.dart';
-import 'app_route_constants.dart';
 
 class AppRouter {
-  static GoRouter returnRouter(bool isAuth) {
+  static GoRouter returnRouter(bool isAuth, GlobalKey<NavigatorState> navigatorKey) {
     return GoRouter(
+      navigatorKey: navigatorKey,
       routes: [
         GoRoute(
           path: '/',
@@ -28,32 +28,30 @@ class AppRouter {
           pageBuilder: (context, state) => const MaterialPage(child: LoginView()),
         ),
         GoRoute(
-          path: '/',
+          path: '/register',
           pageBuilder: (context, state) => const MaterialPage(child: RegisterView()),
         ),
         GoRoute(
-          path: '/onBoarding',
+          path: '/forgotPassword',
           pageBuilder: (context, state) => const MaterialPage(child: ForgotPasswordView()),
         ),
         GoRoute(
-          path: '/login',
+          path: '/main',
           pageBuilder: (context, state) => const MaterialPage(child: MainView()),
         ),
         GoRoute(
-          path: '/login',
+          path: '/storeDetails',
           pageBuilder: (context, state) => const MaterialPage(child: StoreDetailsView()),
         ),
       ],
       errorPageBuilder: (context, state) => const MaterialPage(child: ErrorPage()),
-      redirect: (context, state) {
-        if (!isAuth &&
-            state.location
-                .startsWith('/${RoutesConstants.loginRoute}')) {
-          return context.namedLocation(RoutesConstants.loginRoute);
-        } else {
-          return null;
-        }
-      },
+      // redirect: (context, state) {
+      //   if (!isAuth) {
+      //     return context.namedLocation(RoutesConstants.loginRoute);
+      //   } else {
+      //     return null;
+      //   }
+      // },
     );
   }
 }
