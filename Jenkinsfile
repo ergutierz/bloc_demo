@@ -17,12 +17,16 @@ pipeline {
         }
         stage('Run Tests') {
             when {
-                changeRequest() // This stage will only run for PRs
+                // This condition ensures the stage runs only for pull requests
+                expression {
+                    env.CHANGE_ID != null
+                }
             }
             steps {
                 sh 'flutter test'
             }
         }
+
         stage('Build Android') {
             steps {
                 sh 'flutter build apk --release'
@@ -45,3 +49,5 @@ pipeline {
         }
     }
 }
+Expected a when condition @ line 17, column 7.
+Empty when closure, remove the property or add some content. @ line 17, column 7.
